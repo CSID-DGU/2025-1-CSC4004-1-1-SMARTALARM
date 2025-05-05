@@ -72,7 +72,10 @@ const MainDashboard = () => {
       </View>
 
       {/* 하단 버튼들 */}
-      <TouchableOpacity style={styles.outlinedButton}>
+      <TouchableOpacity
+        style={styles.outlinedButton}
+        onPress={() => router.push('/(tabs)/location-preferences')}
+      >
         <Text style={styles.outlinedText}>Location Preferences</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.outlinedButton}>
