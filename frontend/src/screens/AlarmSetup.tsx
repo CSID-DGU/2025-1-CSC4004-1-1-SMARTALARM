@@ -1,5 +1,3 @@
-// AlarmSetup.tsx
-
 import React, { useState } from 'react';
 import {
   View,
@@ -11,7 +9,7 @@ import {
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-const AlarmSetup = ({ navigation }) => {
+const AlarmSetup = () => {
   const [destination, setDestination] = useState('');
   const [transportMode, setTransportMode] = useState('Car');
   const [arrivalTime, setArrivalTime] = useState('00:00');

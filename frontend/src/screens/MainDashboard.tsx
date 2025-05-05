@@ -1,9 +1,16 @@
-// MainDashboard.tsx
-
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const MainDashboard = ({ navigation }) => {
+import { RootStackParamList } from '../../App';
+
+type MainDashboardProps = {
+  navigation: NativeStackNavigationProp<RootStackParamList, 'MainDashboard'>;
+};
+
+
+
+const MainDashboard = ({ navigation }: MainDashboardProps) => {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Smart Alarm</Text>
@@ -64,7 +71,10 @@ const MainDashboard = ({ navigation }) => {
       </View>
 
       {/* 하단 버튼들 */}
-      <TouchableOpacity style={styles.outlinedButton}>
+      <TouchableOpacity
+        style={styles.outlinedButton}
+        onPress={() => navigation.navigate('LocationPreferences')}
+      >
         <Text style={styles.outlinedText}>Location Preferences</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.outlinedButton}>
@@ -103,6 +113,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
   },
+  tabContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  tabButton: {},
+  tabText: {},
+  sectionTitle: {},
+  cardContainer: {},
+  card: {},
+  cardIcon: {},
+  cardTitle: {},
+  cardValue: {},
+  buttonRow: {},
+  outlinedButton: {},
+  outlinedText: {},
+  modeButton: {},
+  
 });
 
 export default MainDashboard;
