@@ -1,17 +1,12 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+// MainDashboard.tsx
 
-const MainDashboard = () => {
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+
+const MainDashboard = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Smart Alarm</Text>
-
       {/* 탭 버튼 */}
       <View style={styles.tabContainer}>
         <TouchableOpacity style={styles.tabButton}>
@@ -75,7 +70,10 @@ const MainDashboard = () => {
       <TouchableOpacity style={styles.outlinedButton}>
         <Text style={styles.outlinedText}>Settings</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.filledButton}>
+      <TouchableOpacity
+        style={styles.filledButton}
+        onPress={() => navigation.navigate('AlarmSetup')}
+      >
         <Text style={styles.filledText}>Alarm Setup</Text>
       </TouchableOpacity>
     </ScrollView>
@@ -86,105 +84,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#ffffff', // 항상 흰 배경
+    backgroundColor: '#ffffff',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: '#000000', // 항상 검정 글씨
-  },
-  tabContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 20,
-  },
-  tabButton: {
-    flex: 1,
-    backgroundColor: '#f0f0f0',
-    padding: 10,
-    marginHorizontal: 5,
-    borderRadius: 8,
-  },
-  tabText: {
-    textAlign: 'center',
     color: '#000000',
-    fontWeight: '600',
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    color: '#000000',
-  },
-  cardContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 20,
-  },
-  card: {
-    flex: 1,
-    backgroundColor: '#f8f8f8',
-    padding: 15,
-    marginHorizontal: 5,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  cardIcon: {
-    fontSize: 24,
-    marginBottom: 5,
-    color: '#000000',
-  },
-  cardTitle: {
-    color: '#555555',
-    fontSize: 14,
-  },
-  cardValue: {
-    color: '#000000',
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 5,
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 20,
   },
   filledButton: {
-    flex: 1,
-    backgroundColor: '#000000',
+    backgroundColor: '#000',
     padding: 15,
     borderRadius: 8,
-    marginHorizontal: 5,
-  },
-  outlinedButton: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: '#000000',
-    padding: 15,
-    borderRadius: 8,
-    marginHorizontal: 5,
+    marginTop: 10,
   },
   filledText: {
-    color: '#ffffff',
+    color: '#fff',
     textAlign: 'center',
     fontWeight: 'bold',
-  },
-  outlinedText: {
-    color: '#000000',
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  modeButton: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#000000',
-    borderRadius: 8,
-    padding: 10,
-    marginHorizontal: 5,
-    justifyContent: 'center',
   },
 });
 

@@ -6,8 +6,11 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
+import { useRouter } from 'expo-router';
 
 const MainDashboard = () => {
+  const router = useRouter();
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Smart Alarm</Text>
@@ -75,7 +78,10 @@ const MainDashboard = () => {
       <TouchableOpacity style={styles.outlinedButton}>
         <Text style={styles.outlinedText}>Settings</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.filledButton}>
+      <TouchableOpacity
+        style={styles.filledButton}
+        onPress={() => router.push('/(tabs)/alarm-setup')}
+      >
         <Text style={styles.filledText}>Alarm Setup</Text>
       </TouchableOpacity>
     </ScrollView>
