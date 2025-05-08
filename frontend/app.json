@@ -1,4 +1,7 @@
 {
   "name": "frontend",
-  "displayName": "frontend"
+  "displayName": "frontend",
+  "expo": {
+    "jsEngine": "jsc"
+  }
 }

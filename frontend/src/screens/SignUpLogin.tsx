@@ -21,7 +21,7 @@ const SignUpLogin = () => {
 
   const handleLogin = () => {
     Keyboard.dismiss();
-    navigation.navigate('MainDashboard');
+    navigation.replace('MainDashboard');
   };
 
   const handleReturnKey = () => {

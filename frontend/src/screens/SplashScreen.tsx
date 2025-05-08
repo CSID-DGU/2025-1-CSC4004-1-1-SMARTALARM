@@ -8,7 +8,7 @@ const SplashScreen = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace('MainDashboard');
+      navigation.replace('SignUpLogin');
     }, 3000); // 3초 후 이동
 
     return () => clearTimeout(timer);
