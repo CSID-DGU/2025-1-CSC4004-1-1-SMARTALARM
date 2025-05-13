@@ -4,9 +4,10 @@ const jwt = require('jsonwebtoken');
 const knex = require('../db/knex');
 
 const config = require('../config');
+
 const JWT_SECRET = config.jwt.secret;
 
-module.exports = async function (fastify, opts) {
+module.exports = async (fastify, opts) => {
     // /api/users/register
     fastify.post('/users/register', {
         schema: {
@@ -105,6 +106,39 @@ module.exports = async function (fastify, opts) {
             });
 
             return { userId: user.user_id, token };
+        }
+    });
+
+    // /api/users/me
+    // To be implemented: defaultHome and defaultWork
+    fastify.get('/users/me', {
+        preValidation: [fastify.authenticate],
+        schema: {
+            response: {
+                200: {
+                    type: 'object',
+                    properties: {
+                        userId: { type: 'string' },
+                        email: { type: 'string', format: 'email' },
+                        nickname: { type: 'string' }
+                    }
+                }
+            }
+        },
+        handler: async (request, reply) => {
+            const { userId } = request.user;
+
+            // Get the user information
+            const user = await knex('user').where({ user_id: userId }).first();
+            if (!user) {
+                return reply.status(404).send({ error: 'User not found' });
+            }
+
+            return {
+                userId: user.user_id,
+                email: user.email,
+                nickname: user.username
+            };
         }
     });
 };
