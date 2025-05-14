@@ -1,21 +1,19 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 require('dotenv').config();
 
 const fastify = require('fastify')({ logger: true });
-// eslint-disable-next-line import/no-extraneous-dependencies
 const fastifyCORS = require('@fastify/cors');
 
 const config = require('./config');
-const createTables = require('./db/createTables');
-// const knex = require('knex');
+const db = require('./db');
+
+const authPlugin = require('./scripts/authenticate');
 
 const users = require('./routes/users');
-const authPlugin = require('./scripts/authenticate');
 
 // Run the server!
 const start = async () => {
     // Create DB tables
-    await createTables();
+    await db.createTables();
 
     // Import plugins
     fastify.register(fastifyCORS);
