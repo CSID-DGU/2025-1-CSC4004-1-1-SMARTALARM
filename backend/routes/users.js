@@ -144,6 +144,7 @@ module.exports = async (fastify, opts) => {
 
     // PUT /api/users/me
     // WIP
+    // TODO: more fields should be updated
     fastify.put('/users/me', {
         preValidation: [fastify.authenticate],
         schema: {
@@ -158,9 +159,7 @@ module.exports = async (fastify, opts) => {
                 200: {
                     type: 'object',
                     properties: {
-                        userId: { type: 'string' },
-                        email: { type: 'string', format: 'email' },
-                        nickname: { type: 'string' }
+                        status: { type: 'string' }
                     }
                 }
             }
@@ -185,6 +184,16 @@ module.exports = async (fastify, opts) => {
     // TODO: Handle related data deletion (after setup related databases)
     fastify.delete('/users/me', {
         preValidation: [fastify.authenticate],
+        schema: {
+            response: {
+                200: {
+                    type: 'object',
+                    properties: {
+                        status: { type: 'string' }
+                    }
+                }
+            }
+        },
         handler: async (request, reply) => {
             const { userId } = request.user;
 
