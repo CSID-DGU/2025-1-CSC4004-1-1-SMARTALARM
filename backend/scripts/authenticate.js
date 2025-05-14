@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 const fp = require('fastify-plugin');
 const jwt = require('jsonwebtoken');
 
