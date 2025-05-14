@@ -24,7 +24,6 @@ const envMap = Object.fromEntries(
 if (!envMap.JWT_SECRET) {
     const secret = crypto.randomBytes(32).toString('hex');
     envMap.JWT_SECRET = secret;
-    fs.appendFileSync(ENV_PATH, `\nJWT_SECRET=${secret}\n`);
 
     console.log(`JWT_SECRET generated and added to ${ENV_PATH}`);
     const envContent = Object.entries(envMap)
