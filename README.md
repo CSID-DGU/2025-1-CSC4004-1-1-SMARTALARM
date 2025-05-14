@@ -2,7 +2,7 @@
 👥 팀 소개<br>
 🔹 팀명: SMARTALARM<br>
 👤 팀장<br>
-김준수<br>
+- <br>
 🧑‍🤝‍🧑 팀원<br>
 김하림<br>
 김유리<br>
