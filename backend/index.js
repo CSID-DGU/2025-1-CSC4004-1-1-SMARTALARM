@@ -7,6 +7,7 @@ const config = require('./config');
 const db = require('./db');
 
 const authPlugin = require('./scripts/authenticate');
+const geocoderPlugin = require('./scripts/geocoder');
 
 const users = require('./routes/users');
 
@@ -18,6 +19,7 @@ const start = async () => {
     // Import plugins
     fastify.register(fastifyCORS);
     fastify.register(authPlugin);
+    fastify.register(geocoderPlugin);
 
     // default route for health check
     fastify.get('/', async () => ({ status: 'ok' }));
