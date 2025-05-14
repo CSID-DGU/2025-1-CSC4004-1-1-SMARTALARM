@@ -8,7 +8,7 @@ const config = require('../config');
 const JWT_SECRET = config.jwt.secret;
 
 module.exports = async (fastify, opts) => {
-    // /api/users/register
+    // POST /api/users/register
     fastify.post('/users/register', {
         schema: {
             body: {
@@ -57,7 +57,7 @@ module.exports = async (fastify, opts) => {
         }
     });
 
-    // /api/users/login
+    // POST /api/users/login
     fastify.post('/users/login', {
         schema: {
             body: {
@@ -109,7 +109,7 @@ module.exports = async (fastify, opts) => {
         }
     });
 
-    // /api/users/me
+    // GET /api/users/me
     // To be implemented: defaultHome and defaultWork
     fastify.get('/users/me', {
         preValidation: [fastify.authenticate],
@@ -138,6 +138,61 @@ module.exports = async (fastify, opts) => {
                 userId: user.user_id,
                 email: user.email,
                 nickname: user.username
+            };
+        }
+    });
+
+    // PUT /api/users/me
+    // WIP
+    fastify.put('/users/me', {
+        preValidation: [fastify.authenticate],
+        schema: {
+            body: {
+                type: 'object',
+                properties: {
+                    email: { type: 'string', format: 'email' },
+                    nickname: { type: 'string' }
+                }
+            },
+            response: {
+                200: {
+                    type: 'object',
+                    properties: {
+                        userId: { type: 'string' },
+                        email: { type: 'string', format: 'email' },
+                        nickname: { type: 'string' }
+                    }
+                }
+            }
+        },
+        handler: async (request, reply) => {
+            const { userId } = request.user;
+            const { email, nickname } = request.body;
+
+            // Update the user information
+            await knex('user')
+                .where({ user_id: userId })
+                .update({ email, username: nickname });
+
+            return {
+                status: 'updated'
+            };
+        }
+    });
+
+    // DELETE /api/users/me
+    // WIP, now only deletes the user (not handling related data)
+    // TODO: Handle related data deletion (after setup related databases)
+    fastify.delete('/users/me', {
+        preValidation: [fastify.authenticate],
+        handler: async (request, reply) => {
+            const { userId } = request.user;
+
+            // Delete the user
+            await knex('user').where({ user_id: userId }).del();
+
+            return {
+                status: 'deleted'
             };
         }
     });
