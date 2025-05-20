@@ -1,16 +1,16 @@
 {
-  "type": "module",
-  "dependencies": {
-    "@supercharge/promise-pool": "^3.2.0",
-    "axios": "^1.9.0",
-    "cheerio": "^1.0.0",
-    "dotenv": "^16.5.0",
-    "puppeteer": "^24.8.2"
-  },
-  "devDependencies": {
-    "eslint": "^8.57.1",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^10.1.5",
-    "prettier": "^3.5.3"
-  }
+    "type": "module",
+    "dependencies": {
+        "@supercharge/promise-pool": "^3.2.0",
+        "axios": "^1.9.0",
+        "cheerio": "^1.0.0",
+        "dotenv": "^16.5.0",
+        "puppeteer": "^24.8.2"
+    },
+    "devDependencies": {
+        "eslint": "^8.57.1",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^10.1.5",
+        "prettier": "^3.5.3"
+    }
 }
