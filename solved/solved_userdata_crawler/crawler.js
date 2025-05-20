@@ -1,12 +1,11 @@
 import puppeteer from 'puppeteer';
 import fs from 'fs/promises';
-import { PromisePool } from '@supercharge/promise-pool';
 
 const START_TIER = 6;
 const END_TIER = 6;
 
-const OUTPUT_FILE = `solved_problems_by_tags_${START_TIER}to${END_TIER}.json`;
-const INPUT_FILE = 'handles_by_tier.json';
+const OUTPUT_FILE = `../data/solved_problems_by_tags_${START_TIER}to${END_TIER}.json`;
+const INPUT_FILE = '../data/handles-by-tier.json';
 
 const rawData = await fs.readFile(INPUT_FILE, 'utf-8');
 const data = JSON.parse(rawData).result;

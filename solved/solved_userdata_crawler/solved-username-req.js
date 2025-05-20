@@ -3,7 +3,7 @@ import { promises as fs } from 'fs';
 import { config } from 'dotenv';
 config();
 
-const OUTPUT_FILE = 'handles_by_tier.json';
+const OUTPUT_FILE = '../data/handles-by-tier.json';
 const TOKEN = process.env.SOLVED_TOKEN;
 const HEADERS = {
     Cookie: `solvedacToken=${TOKEN}`

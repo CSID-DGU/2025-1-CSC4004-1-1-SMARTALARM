@@ -9,8 +9,8 @@ const SAVE_INTERVAL = 10;
 const USER_NUMBER = 1000;
 const SLEEP_INTERVAL = 1000;
 
-const OUTPUT_FILE = `solved_problems_by_tags_${START_TIER}to${END_TIER}.json`;
-const INPUT_FILE = 'handles_by_tier.json';
+const OUTPUT_FILE = `../data/solved_problems_by_tags_${START_TIER}to${END_TIER}.json`;
+const INPUT_FILE = '../data/handles-by-tier.json';
 
 const rawData = await fs.readFile(INPUT_FILE, 'utf-8');
 const data = JSON.parse(rawData).result;

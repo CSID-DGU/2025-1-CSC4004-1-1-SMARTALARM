@@ -5,12 +5,7 @@ import { PromisePool } from '@supercharge/promise-pool';
 
 const START_TIER = 11;
 const END_TIER = 15;
-const SAVE_INTERVAL = 64;
-const OUTPUT_FILE = `solved-problems-by-tags-${START_TIER}to${END_TIER}.json`;
-const INPUT_FILE = 'handles-by-tier.json';
-
-const rawData = await fs.readFile(INPUT_FILE, 'utf-8');
-const data = JSON.parse(rawData).result;
+const OUTPUT_FILE = `../data/solved-problems-by-tags-${START_TIER}to${END_TIER}.json`;
 
 const tags = [
     'implementation',
