@@ -1,6 +1,7 @@
 import puppeteer from 'puppeteer';
 import fs from 'fs/promises';
 import { PromisePool } from '@supercharge/promise-pool';
+import { tags } from '../solved_tags.js';
 
 const START_TIER = 11;
 const END_TIER = 15;
@@ -14,17 +15,6 @@ const INPUT_FILE = '../data/handles-by-tier.json';
 
 const rawData = await fs.readFile(INPUT_FILE, 'utf-8');
 const data = JSON.parse(rawData).result;
-
-const tags = [
-    'implementation',
-    'greedy',
-    'string',
-    'data_structures',
-    'graphs',
-    'dp',
-    'geometry',
-    'math'
-];
 
 const get_solved_problems_by_tag = async (browser, username, tag) => {
     const page = await browser.newPage();

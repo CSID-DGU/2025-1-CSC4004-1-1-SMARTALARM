@@ -2,21 +2,11 @@ import axios from 'axios';
 import * as cheerio from 'cheerio';
 import fs from 'fs/promises';
 import { PromisePool } from '@supercharge/promise-pool';
+import { tags } from '../solved_tags.js';
 
 const START_TIER = 11;
 const END_TIER = 15;
 const OUTPUT_FILE = `../data/solved-problems-by-tags-${START_TIER}to${END_TIER}.json`;
-
-const tags = [
-    'implementation',
-    'greedy',
-    'string',
-    'data_structures',
-    'graphs',
-    'dp',
-    'geometry',
-    'math'
-];
 
 const get_solved_problems_by_tag = async (username, tag) => {
     const query = encodeURIComponent(`s@${username} #${tag}`);
