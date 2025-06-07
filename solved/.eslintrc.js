@@ -1,4 +1,8 @@
 module.exports = {
+    'ignorePatterns': [
+        '.eslintrc.js'
+    ],
+
     env: {
         browser: true,
         es2020: true,
