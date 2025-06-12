@@ -146,3 +146,6 @@ dist
 
 # sqlite databases
 *.sqlite
+
+# pickle cache files
+problem_metadata_cache.pkl
