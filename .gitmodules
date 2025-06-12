@@ -1,0 +1,3 @@
+[submodule "solved/solvedac"]
+	path = solved/solvedac
+	url = https://github.com/Hiyabye/solvedac.git
